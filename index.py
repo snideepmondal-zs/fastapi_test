@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database.data import data as data
-from fastapi.staticfiles import StaticFiles
+from routes.bar import bar
 
 app = FastAPI()
 
@@ -13,8 +13,5 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
-app.mount("/static", StaticFiles(directory="database"), name="static")
 
-@app.get("/")
-def root():
-    return data()
+app.include_router(bar)
