@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database.data import data as data
 from routes.bar import bar
+from  routes.table import table
 
 app = FastAPI()
 
@@ -15,3 +16,4 @@ app.add_middleware(
 
 
 app.include_router(bar)
+app.include_router(table)
